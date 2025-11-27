@@ -1,0 +1,26 @@
+<h1>Dashboard</h1>
+
+<!-- Navigation Menu -->
+<nav style="margin-bottom: 20px;">
+    <a href="/">Home</a> |
+    <a href="/dashboard/">Dashboard</a> |
+    <a href="/history/">History</a> |
+    <a href="/statistics/">Statistics</a>
+</nav>
+
+<p>Welcome to the Student Registration System Dashboard</p>
+
+<h3>Dashboard Action</h3>
+<form method="POST">
+    {% csrf_token %}
+    <label>Enter something:</label><br>
+    <input type="text" name="input_data"><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Logout Button (Post Request) -->
+<form method="POST" action="/logout/" style="margin-top: 20px;">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
