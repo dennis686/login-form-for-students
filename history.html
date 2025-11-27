@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student History</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ccc; }
+        th { background: #f4f4f4; }
+        .actions { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<h2>Student Registration History</h2>
+
+<!-- Example POST form -->
+<div class="actions">
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Example action dropdown -->
+        <label>Select Action:</label>
+        <select name="action">
+            <option value="refresh">Refresh Table</option>
+            <option value="export">Export Data</option>
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+</div>
+
+<table>
+    <tr>
+        <th>Full Name</th>
+        <th>Matric Number</th>
+        <th>Department</th>
+        <th>Year</th>
+        <th>Date Registered</th>
+    </tr>
+
+    {% for student in students %}
+    <tr>
+        <td>{{ student.full_name }}</td>
+        <td>{{ student.matric_number }}</td>
+        <td>{{ student.department }}</td>
+        <td>{{ student.year }}</td>
+        <td>{{student.enrollment_date }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No students registered yet.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

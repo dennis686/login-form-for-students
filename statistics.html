@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Statistics</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .box {
+            background: #f7f7f7;
+            padding: 15px;
+            border-radius: 5px;
+            width: 250px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student Statistics Dashboard</h2>
+
+<div class="box">
+    <h3>Total Students</h3>
+    <p>{{ total_students }}</p>
+</div>
+
+<div class="box">
+    <h3>Registered Today</h3>
+    <p>{{ today_students }}</p>
+</div>
+
+<h3>Registrations by Department</h3>
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Department</th>
+        <th>Number of Students</th>
+    </tr>
+
+    {% for item in department_counts %}
+    <tr>
+        <td>{{ item.department }}</td>
+        <td>{{ item.count }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="2">No data available.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
